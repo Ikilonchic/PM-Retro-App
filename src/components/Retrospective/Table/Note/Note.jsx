@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { RiDeleteBin6Line } from 'react-icons/ri';
-import { BiLike } from 'react-icons/bi';
+import { BiLike, BiDislike } from 'react-icons/bi';
 import { AiOutlineCheck, AiOutlineClose } from 'react-icons/ai';
 
 import theme from '../../../../style/Theme.module.scss';
@@ -42,6 +42,7 @@ class Note extends React.Component {
 
         this.editValue = this.editValue.bind(this);
         this.addLike = this.addLike.bind(this);
+        this.removeLike = this.removeLike.bind(this);
 
         this.delete = this.delete.bind(this);
 
@@ -57,8 +58,8 @@ class Note extends React.Component {
 
     edit({ value, likes }) {
         this.props.onEdit(this.state.id, {
-            value: value || this.state.value,
-            likes: likes || this.state.likes,
+            value: typeof value !== 'undefined' ? value : this.state.value,
+            likes: typeof likes !== 'undefined' ? likes : this.state.likes,
         });
     }
 
@@ -80,6 +81,12 @@ class Note extends React.Component {
     addLike() {
         this.edit({
             likes: this.state.likes + 1,
+        });
+    }
+
+    removeLike() {
+        this.edit({
+            likes: this.state.likes -1,
         });
     }
 
@@ -123,7 +130,9 @@ class Note extends React.Component {
             </div>
             <div className={styles['container__bottom']}>
                 <div className={styles['container__likes']}>
-                    {this.state.likes} <BiLike onClick={this.addLike}/>
+                    {this.state.likes}
+                    <BiDislike onClick={this.removeLike}/>
+                    <BiLike onClick={this.addLike}/>
                 </div>
                 <RiDeleteBin6Line onClick={this.delete} />
             </div>

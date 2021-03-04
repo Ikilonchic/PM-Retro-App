@@ -95,7 +95,7 @@ class Table extends React.Component {
 
     renderNoteList() {
         return <div className={styles['container__list']}>
-            {this.state.comments.value.slice(0).reverse().map(elem => {
+            {this.state.comments.value.sort((a, b) => b.likes - a.likes).map(elem => {
                 return <Note
                             className={classNames(styles['container__note'])}
                             key={elem.id} {...elem}
