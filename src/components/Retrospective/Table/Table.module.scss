@@ -1,0 +1,86 @@
+@import '../../../style/Scroll.mixin.scss';
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    
+    min-width: calc(320px - 2rem);
+    max-width: 360px;
+    max-height: 98%;
+
+    padding: 1rem;
+
+    background-color: #131417;
+    border-radius: 1rem;
+    border: 1px solid #2A2C32;
+
+    color: #868D97;
+
+    &__top {
+        display: flex;
+        flex-direction: row;
+
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__title {
+        font-size: 1.2em;
+    }
+
+    &__comments-count {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 1.5em;
+        height: 1.5em;
+
+        border-radius: .5rem;
+        border: 2px solid #36383D;
+
+        line-height: 1;
+    }
+
+    &__add-btn {
+        width: 100%;
+
+        margin-top: 1rem;
+        padding: 1rem;
+
+        border-radius: .5rem;
+        border: none;
+
+        background-color: #1E1F23;
+        
+        font-size: .9em;
+        color: inherit;
+    }
+
+    &__add-form {
+        margin-top: 1rem;
+    }
+
+    &__list {
+        margin-top: 1rem;
+        padding: 0 5px;
+
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        @include scroll-bar(5px);
+    }
+
+    &__note {
+        margin: .5rem 0;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

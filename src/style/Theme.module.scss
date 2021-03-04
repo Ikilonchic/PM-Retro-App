@@ -1,0 +1,44 @@
+.white-bg,
+.white-bg-active:active,
+.white-bg-focus:focus,
+.white-bg-hover:hover {
+    background-color: white;
+    color: black;
+}
+
+.blue-bg,
+.blue-bg-active:active,
+.blue-bg-focus:focus,
+.blue-bg-hover:hover {
+    background-color: blue;
+    color: white;
+}
+
+.red-bg,
+.red-bg-active:active,
+.red-bg-focus:focus,
+.red-bg-hover:hover {
+    background-color: red;
+    color: white;
+}
+
+.white-bd,
+.white-bd-active:active,
+.white-bd-focus:focus,
+.white-bd-hover:hover {
+    border-color: white;
+}
+
+.blue-bd,
+.blue-bd-active:active,
+.blue-bd-focus:focus,
+.blue-bd-hover:hover {
+    border-color: blue;
+}
+
+.red-bd,
+.red-bd-active:active,
+.red-bd-focus:focus,
+.red-bd-hover:hover {
+    border-color: red;
+}
