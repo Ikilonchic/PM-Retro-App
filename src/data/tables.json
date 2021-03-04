@@ -1,0 +1,17 @@
+[
+    {
+        "id": 0,
+        "title": "Good things",
+        "theme": "white"
+    },
+    {
+        "id": 1,
+        "title": "Bad things",
+        "theme": "red"
+    },
+    {
+        "id": 2,
+        "title": "Action items",
+        "theme": "blue"
+    }
+]
