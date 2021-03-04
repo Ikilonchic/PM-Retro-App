@@ -124,7 +124,7 @@ class Table extends React.Component {
                     onCancel={this.switchMode} 
                     theme={this.state.theme}/> :
                 <button className={styles['container__add-btn']} onClick={this.switchMode}>
-                    + Write comment
+                    + Write note
                 </button>}
             {this.state.comments.value.length ? this.renderNoteList() : ''}
         </div>;
