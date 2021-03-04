@@ -60,6 +60,7 @@ class Table extends React.Component {
                     id: lastId,
                     value,
                     likes: 0,
+                    created_at: new Date(),
                 }],
                 lastId: lastId + 1,
             },
@@ -67,14 +68,14 @@ class Table extends React.Component {
     }
 
     editNote(id, { value, likes }) {
-        const editedCommentId = this.state.comments.value.findIndex(elem => elem.id === id);
+        const editedCommentIndex = this.state.comments.value.findIndex(elem => elem.id === id);
 
-        if (editedCommentId !== -1) {
+        if (editedCommentIndex !== -1) {
             this.setState({
                 comments: {
                     value: this.state.comments.value.map((elem, index) => {
-                        return index !== editedCommentId ? elem : {
-                            id,
+                        return index !== editedCommentIndex ? elem : {
+                            ...elem,
                             value,
                             likes,
                         };

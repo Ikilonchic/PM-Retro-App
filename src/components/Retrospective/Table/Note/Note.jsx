@@ -8,6 +8,7 @@ import { AiOutlineCheck, AiOutlineClose } from 'react-icons/ai';
 
 import theme from '../../../../style/Theme.module.scss';
 import styles from './Note.module.scss';
+import DateService from '../../../../services/DateService';
 
 const propTypes = {
     className: PropTypes.string,
@@ -19,6 +20,7 @@ const propTypes = {
     value: PropTypes.string.isRequired,
     likes: PropTypes.number.isRequired,
     theme: PropTypes.string.isRequired,
+    created_at: PropTypes.instanceOf(Date),
     onEdit: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
 };
@@ -31,6 +33,7 @@ class Note extends React.Component {
             id: this.props.id,
             value: this.props.value,
             likes: this.props.likes,
+            created_at: this.props.created_at,
             isInEditMode: false,
         };
 
@@ -124,23 +127,37 @@ class Note extends React.Component {
     }
 
     renderStaticView() {
+        const date = DateService.getReadableFormat('en', this.state.created_at);
+        
         return <>
             <div className={styles['container__main']} onClick={this.switchMode}>
                 {this.state.value}
             </div>
             <div className={styles['container__bottom']}>
                 <div className={styles['container__likes']}>
-                    {this.state.likes}
-                    <BiDislike onClick={this.removeLike}/>
-                    <BiLike onClick={this.addLike}/>
+                    <div className={styles['container__likes-count']}>
+                        {this.state.likes}
+                    </div>
+                    <BiDislike
+                        className={styles['container__btn']}
+                        onClick={this.removeLike}/>
+                    <BiLike
+                        className={styles['container__btn']}
+                        onClick={this.addLike}/>
                 </div>
-                <RiDeleteBin6Line onClick={this.delete} />
+                <RiDeleteBin6Line
+                    className={styles['container__btn']}
+                    onClick={this.delete} />
+            </div>
+            <div className={styles['container__details']}>
+                {`${date.timeCode}, ${date.day}, ${date.date} ${date.month}, ${date.year}`}
             </div>
         </>;
     }
 
     render() {
-        return <div className={classNames(this.props.className, styles['container'], theme[`${this.props.theme}-bd-hover`])}>
+        return <div 
+            className={classNames(this.props.className, styles['container'], theme[`${this.props.theme}-bd-hover`])}>
             {this.state.isInEditMode ?
                 this.renderEditView() : this.renderStaticView()}
         </div>;
