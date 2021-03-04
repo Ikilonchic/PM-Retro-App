@@ -12,8 +12,6 @@
     &__main {
         max-width: 100%;
 
-        user-select: none;
-
         text-overflow: ellipsis;
         overflow: hidden;
         overflow-wrap: break-word;
@@ -33,6 +31,7 @@
         display: inline-flex;
         flex-direction: row;
         align-items: center;
+        user-select: none;
     }
 
     &__input {
